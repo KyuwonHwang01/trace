@@ -1,30 +1,79 @@
 {
   "expo": {
-    "name": "timelapse-app",
-    "slug": "timelapse-app",
+    "name": "Trace",
+    "slug": "trace",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0c0c0e"
     },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.underdog.trace",
+      "supportsTablet": true,
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Trace needs camera access to take photos.",
+        "NSPhotoLibraryUsageDescription": "Trace needs photo library access to import existing photos and save slideshows or collages.",
+        "NSPhotoLibraryAddUsageDescription": "Trace needs permission to save exported photos and collages to your camera roll.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
+      "package": "com.underdog.trace",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#0c0c0e"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_VISUAL_USER_SELECTED",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Trace needs camera access to take photos."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Trace needs photo library access to save exports.",
+          "savePhotosPermission": "Trace needs permission to save photos to your camera roll.",
+          "isAccessMediaLocationEnabled": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Trace needs photo library access to import existing photos into projects."
+        }
+      ],
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8a6a3cf8-0553-4332-ad72-a295e2837c26"
+      }
+    },
+    "owner": "underdog_ben"
   }
 }
