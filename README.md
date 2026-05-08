@@ -1,88 +1,73 @@
 # Trace
 
-> *record of change*
+**Record of change.**
 
-A photo journaling app that helps you track visual changes over time. Take a photo with a translucent overlay of a previous reference shot, capture the same composition over weeks or months, and see your transformation in stack or slider comparison views.
+Trace is a photo journaling app for tracking slow visual change — diet, plant growth, room transformations, or anything worth remembering across weeks and months.
 
-Useful for diet progress, plant growth, interior changes, or any slow transformation worth remembering.
+---
+
+## Support
+
+Need help, found a bug, or have a feature request?
+
+**Email:** slowforge.studio@gmail.com
+
+We usually respond within 1–2 business days.
+
+You can also [open an issue](https://github.com/KyuwonHwang01/trace/issues) on this repository.
+
+---
 
 ## Features
 
-- **Reference overlay camera** — translucent overlay of a previous photo helps you align new shots to the same composition
-- **Adjustable overlay opacity** — slider for fine-grained transparency control
-- **Tap-to-focus** with iOS-style yellow indicator
-- **Pinch + preset zoom** (1x / 2x / 3x / 5x)
-- **3×3 grid guide** for composition
-- **Folders & projects** — group projects together (e.g. "Plants" → Pine, Forsythia) or create top-level standalone projects
-- **Two compare modes**
-  - **Stack** — top/bottom split with independent pinch-zoom on each pane
-  - **Slider** — drag a vertical divider to reveal before/after
-- **Photo library import** — bring in old photos with EXIF date preserved
-- **Export** — slideshow saved to camera roll album, or vertical collage as a single shareable image
-- **i18n** — English / Korean toggle in Settings
-- **Daily onboarding** — animated chameleon (pink → teal color shift) that shows once per day on first open
-- **Editorial dark theme** — coral accent on charcoal background, Lora serif + Inter sans
+- **Reference overlay camera** — see your previous photo as a translucent overlay through the live camera, so every shot matches the same composition
+- **Two compare modes** — stack (top/bottom split) or slider (drag-to-reveal)
+- **Folders & projects** — organize timelines by topic (Plants, Fitness, Travel)
+- **Photo library import** — bring in existing photos with original EXIF dates preserved
+- **Export** — save as a slideshow album or share a vertical collage
+- **Two languages** — English and 한국어
+- **Privacy first** — everything stays on your device. No accounts, no cloud, no analytics
 
-All data stored locally on device. No accounts, no sync, no analytics.
+---
 
-## Stack
+## FAQ
 
-- **React Native** + **Expo** (SDK 54)
-- **TypeScript**
-- **expo-camera** for photo capture and overlay
-- **expo-image-picker** for gallery imports
-- **expo-image-manipulator** + **react-native-view-shot** for collage export
-- **expo-media-library** + **expo-sharing** for save and share
-- **react-native-svg** for the chameleon onboarding illustration
-- **AsyncStorage** for project/folder/photo metadata
-- **expo-file-system** (legacy) for photo file storage in app document directory
-- **@expo-google-fonts/lora** + **@expo-google-fonts/inter**
-- **@react-navigation/native-stack**
-- **expo-haptics** for tactile feedback
+**Where is my data stored?**
+All photos and project information stay on your device. Trace does not use cloud sync, accounts, or analytics.
 
-## Project structure
+**Can I back up my projects?**
+Use the Export feature to save slideshows or collages to your Photos library. iCloud Photos backup applies to exported albums.
 
-```
-src/
-├── theme/colors.ts         editorial dark palette + typography tokens
-├── i18n/                   string dictionary + Context provider
-├── types/                  Folder, Project, Photo
-├── storage/                AsyncStorage CRUD + migrations
-│   ├── folders.ts
-│   ├── projects.ts
-│   ├── photos.ts
-│   ├── recompute.ts        folder cover/count cascade
-│   ├── cascade.ts          recursive folder deletion
-│   ├── import.ts           gallery import with EXIF date
-│   ├── onboarding.ts       daily reset flag
-│   └── migration.ts        one-time data shape upgrades
-├── components/             ZoomablePane, CompareSlider, CompareStack,
-│                            PhotoPickerSheet, Chameleon
-├── screens/                Home, FolderDetail, ProjectDetail, Camera,
-│                            Compare, Export, Settings, Onboarding
-├── navigation/             RootNavigator + RootStackParamList
-└── utils/                  share helpers
-```
+**Will my photos sync across devices?**
+Not in the current version. Each device keeps its own library.
 
-## Setup
+**How do I switch between English and Korean?**
+Open Settings inside the app and toggle the language.
 
-```bash
-npm install --legacy-peer-deps
-npx expo start
-```
+**Why does the app ask for camera and photo library access?**
+Camera access is required for the reference overlay camera. Photo library access is required for importing existing photos and saving exports. Trace does not upload or share photos without your action.
 
-Open in Expo Go on a real device for full camera testing. iOS Simulator works for everything except the actual camera feed.
+---
 
-## Building
+## Privacy
 
-EAS Build for distribution:
+See our [Privacy Policy](https://github.com/KyuwonHwang01/trace/blob/main/PRIVACY.md).
 
-```bash
-eas build --profile development --platform ios   # dev client for simulator/device
-eas build --profile production --platform ios    # App Store
-eas build --profile production --platform android # Google Play
-```
+Short version: Trace stores all data locally on your device. We do not collect, transmit, or share any personal information.
 
-## License
+---
 
-Personal project. All rights reserved.
+## Requirements
+
+- iPhone running iOS 15 or later
+- Camera and photo library permissions
+
+---
+
+## About
+
+Trace is built and maintained by Slowforge Studio.
+
+Contact: slowforge.studio@gmail.com
+
+© 2026 Slowforge Studio. All rights reserved.
