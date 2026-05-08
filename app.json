@@ -14,7 +14,7 @@
     },
     "ios": {
       "bundleIdentifier": "com.underdog.trace",
-      "supportsTablet": true,
+      "supportsTablet": false,
       "buildNumber": "1",
       "infoPlist": {
         "NSCameraUsageDescription": "Trace needs camera access to take photos.",
