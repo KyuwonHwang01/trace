@@ -147,12 +147,16 @@ export default function HomeScreen({ navigation }: Props) {
               </Text>
             </View>
             <Text style={styles.cardMeta}>
-              {f.projectCount > 0
-                ? t('home.card.meta.withProjects', {
-                    count: f.projectCount,
+              {f.projectCount === 0
+                ? t('home.card.meta.empty', { when: formatRelative(f.createdAt, t) })
+                : f.projectCount === 1
+                ? t('home.card.meta.withProjectSingular', {
                     when: formatRelative(f.createdAt, t),
                   })
-                : t('home.card.meta.empty', { when: formatRelative(f.createdAt, t) })}
+                : t('home.card.meta.withProjects', {
+                    count: f.projectCount,
+                    when: formatRelative(f.createdAt, t),
+                  })}
             </Text>
           </View>
           <Feather name="chevron-right" size={20} color={colors.textSubtle} />
@@ -184,12 +188,16 @@ export default function HomeScreen({ navigation }: Props) {
             {p.name}
           </Text>
           <Text style={styles.cardMeta}>
-            {p.photoCount > 0
-              ? t('folder.card.meta.withPhotos', {
-                  count: p.photoCount,
+            {p.photoCount === 0
+              ? t('folder.card.meta.empty', { when: formatRelative(p.createdAt, t) })
+              : p.photoCount === 1
+              ? t('folder.card.meta.withPhotoSingular', {
                   when: formatRelative(p.createdAt, t),
                 })
-              : t('folder.card.meta.empty', { when: formatRelative(p.createdAt, t) })}
+              : t('folder.card.meta.withPhotos', {
+                  count: p.photoCount,
+                  when: formatRelative(p.createdAt, t),
+                })}
           </Text>
         </View>
         <Feather name="chevron-right" size={20} color={colors.textSubtle} />

@@ -21,6 +21,7 @@ export const dict = {
     'home.empty.body':
       'Group projects together — Plants, Friends, Diet,\nor anything else worth tracking',
     'home.card.meta.withProjects': '{count} projects · started {when}',
+    'home.card.meta.withProjectSingular': '1 project · started {when}',
     'home.card.meta.empty': 'started {when}',
     'home.modal.eyebrow': 'NEW FOLDER',
     'home.modal.title': 'What will you organize?',
@@ -33,6 +34,7 @@ export const dict = {
     'folder.empty.body':
       'Add a project to start tracking changes inside this folder',
     'folder.card.meta.withPhotos': '{count} photos · started {when}',
+    'folder.card.meta.withPhotoSingular': '1 photo · started {when}',
     'folder.card.meta.empty': 'started {when}',
     'folder.modal.eyebrow': 'NEW PROJECT',
     'folder.modal.title': 'What will you record?',
