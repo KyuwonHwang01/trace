@@ -11,6 +11,7 @@ import {
   Animated,
   Easing,
   GestureResponderEvent,
+  Linking,
 } from 'react-native';
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { Image } from 'expo-image';
@@ -115,7 +116,16 @@ export default function CameraScreen({ navigation, route }: Props) {
 
   const referencePhoto = photos.find((p) => p.id === referenceId) ?? null;
 
-  if (!permission) {
+  // Auto-trigger the iOS permission prompt on first entry. Apple requires
+  // that any pre-permission custom UI must lead directly to the request,
+  // with no escape hatch (rejected under Guideline 5.1.1(iv) for v1.0 build 4).
+  useEffect(() => {
+    if (permission && permission.status === 'undetermined') {
+      requestPermission();
+    }
+  }, [permission?.status]);
+
+  if (!permission || permission.status === 'undetermined') {
     return (
       <View style={styles.permissionContainer}>
         <ActivityIndicator color={colors.accent} />
@@ -124,14 +134,24 @@ export default function CameraScreen({ navigation, route }: Props) {
   }
 
   if (!permission.granted) {
+    // Permission has already been requested and denied. Now we can show
+    // explanatory UI with a path to Settings + a back button.
     return (
       <SafeAreaView style={styles.permissionContainer}>
-        <Text style={styles.permissionTitle}>{t('camera.permission.title')}</Text>
-        <Text style={styles.permissionBody}>{t('camera.permission.body')}</Text>
-        <TouchableOpacity style={styles.permissionBtn} onPress={requestPermission}>
-          <Text style={styles.permissionBtnText}>{t('camera.permission.grant')}</Text>
+        <Text style={styles.permissionTitle}>{t('camera.permission.deniedTitle')}</Text>
+        <Text style={styles.permissionBody}>{t('camera.permission.deniedBody')}</Text>
+        <TouchableOpacity
+          style={styles.permissionBtn}
+          onPress={() => Linking.openSettings()}
+        >
+          <Text style={styles.permissionBtnText}>
+            {t('camera.permission.openSettings')}
+          </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: spacing.md }}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{ marginTop: spacing.md }}
+        >
           <Text style={styles.permissionCancel}>{t('camera.permission.back')}</Text>
         </TouchableOpacity>
       </SafeAreaView>

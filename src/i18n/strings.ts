@@ -74,6 +74,10 @@ export const dict = {
       'Allow camera access to take photos with Trace',
     'camera.permission.grant': 'Allow access',
     'camera.permission.back': 'Go back',
+    'camera.permission.deniedTitle': 'Camera access is off',
+    'camera.permission.deniedBody':
+      'Trace uses the camera to capture photos for your timeline and to show a translucent overlay of a previous reference photo, so each shot lines up with the last. To continue, please enable Camera access for Trace in Settings.',
+    'camera.permission.openSettings': 'Open Settings',
     'camera.overlayLabel': 'OVERLAY',
     'camera.referenceLabel': 'REF',
     'camera.referenceEmpty': 'REF',
@@ -198,6 +202,10 @@ export const dict = {
       'Trace에서 사진을 찍으려면 카메라 접근을 허용해주세요',
     'camera.permission.grant': '권한 허용',
     'camera.permission.back': '돌아가기',
+    'camera.permission.deniedTitle': '카메라 접근이 꺼져 있어요',
+    'camera.permission.deniedBody':
+      'Trace는 카메라로 타임라인 사진을 찍고, 이전 사진을 반투명 오버레이로 보여줘서 매번 같은 각도와 구도로 촬영하도록 도와줍니다. 계속하려면 설정에서 Trace의 카메라 권한을 켜주세요.',
+    'camera.permission.openSettings': '설정 열기',
     'camera.overlayLabel': '오버레이',
     'camera.referenceLabel': '기준',
     'camera.referenceEmpty': '기준',

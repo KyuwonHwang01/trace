@@ -15,11 +15,11 @@
     "ios": {
       "bundleIdentifier": "com.underdog.trace",
       "supportsTablet": false,
-      "buildNumber": "1",
+      "buildNumber": "5",
       "infoPlist": {
-        "NSCameraUsageDescription": "Trace needs camera access to take photos.",
-        "NSPhotoLibraryUsageDescription": "Trace needs photo library access to import existing photos and save slideshows or collages.",
-        "NSPhotoLibraryAddUsageDescription": "Trace needs permission to save exported photos and collages to your camera roll.",
+        "NSCameraUsageDescription": "Trace uses the camera to take photos for your visual timeline and to display a translucent overlay of a previous reference photo, so you can match the same angle and composition when tracking slow changes like plant growth, fitness progress, or room transformations.",
+        "NSPhotoLibraryUsageDescription": "Trace uses your photo library to import existing photos into your timeline projects (with original EXIF dates preserved) and to save exported slideshow albums and comparison collages back to your library so you can share them.",
+        "NSPhotoLibraryAddUsageDescription": "Trace needs permission to save your exported timeline slideshows and side-by-side comparison collages to your camera roll, so you can keep or share them outside the app.",
         "ITSAppUsesNonExemptEncryption": false
       }
     },
@@ -50,21 +50,21 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Trace needs camera access to take photos."
+          "cameraPermission": "Trace uses the camera to take photos for your visual timeline and to display a translucent overlay of a previous reference photo, so you can match the same angle and composition when tracking slow changes like plant growth, fitness progress, or room transformations."
         }
       ],
       [
         "expo-media-library",
         {
-          "photosPermission": "Trace needs photo library access to save exports.",
-          "savePhotosPermission": "Trace needs permission to save photos to your camera roll.",
+          "photosPermission": "Trace uses your photo library to import existing photos into your timeline projects (with original EXIF dates preserved) and to save exported slideshow albums and comparison collages back to your library so you can share them.",
+          "savePhotosPermission": "Trace needs permission to save your exported timeline slideshows and side-by-side comparison collages to your camera roll, so you can keep or share them outside the app.",
           "isAccessMediaLocationEnabled": false
         }
       ],
       [
         "expo-image-picker",
         {
-          "photosPermission": "Trace needs photo library access to import existing photos into projects."
+          "photosPermission": "Trace uses your photo library to import existing photos into your timeline projects, preserving the original EXIF date so each photo lands on the correct moment in your timeline."
         }
       ],
       "expo-font"
