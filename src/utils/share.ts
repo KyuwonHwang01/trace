@@ -16,7 +16,11 @@ export async function savePhotosToAlbum(
   uris: string[],
   albumName: string
 ): Promise<{ saved: number }> {
-  const perm = await MediaLibrary.requestPermissionsAsync();
+  // writeOnly = true requests "Add Only" access (NSPhotoLibraryAddUsageDescription).
+  // The iOS prompt becomes a clean Allow/Don't Allow (no Limited Access option),
+  // which matches what Trace actually does: it only writes app-created exports
+  // to the photo library and never reads existing user photos.
+  const perm = await MediaLibrary.requestPermissionsAsync(true);
   if (!perm.granted) {
     throw new Error('PERMISSION_DENIED');
   }
@@ -56,7 +60,9 @@ export async function savePhotosToAlbum(
 }
 
 export async function savePhotoToCameraRoll(uri: string): Promise<void> {
-  const perm = await MediaLibrary.requestPermissionsAsync();
+  // See savePhotosToAlbum: writeOnly avoids the Limited Access prompt for an
+  // app that only writes to the photo library.
+  const perm = await MediaLibrary.requestPermissionsAsync(true);
   if (!perm.granted) throw new Error('PERMISSION_DENIED');
   await MediaLibrary.createAssetAsync(uri);
 }
