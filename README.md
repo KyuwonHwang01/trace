@@ -59,7 +59,7 @@ Short version: Trace stores all data locally on your device. We do not collect, 
 
 ## Requirements
 
-- iPhone running iOS 15 or later
+- iPhone or iPad running iOS 15 / iPadOS 15 or later
 - Camera and photo library permissions
 
 ---
