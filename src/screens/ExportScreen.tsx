@@ -29,7 +29,10 @@ type Mode = 'slideshow' | 'collage';
 const SPEEDS = [0.5, 1, 1.5, 2];
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const PREVIEW_PAD = spacing.md;
-const PREVIEW_WIDTH = SCREEN_WIDTH - PREVIEW_PAD * 2;
+// Cap the preview at an iPhone-like max so the slideshow square doesn't
+// dominate the iPad screen and push the Save button off-screen.
+const MAX_CONTENT_WIDTH = 480;
+const PREVIEW_WIDTH = Math.min(SCREEN_WIDTH - PREVIEW_PAD * 2, MAX_CONTENT_WIDTH);
 
 export default function ExportScreen({ route, navigation }: Props) {
   const { t } = useTranslation();
@@ -165,6 +168,7 @@ export default function ExportScreen({ route, navigation }: Props) {
 
       {mode === 'slideshow' ? (
         <View style={styles.slideContainer}>
+          <View style={styles.slideContent}>
           <View style={styles.slidePreview}>
             {photos.map((p, i) => (
               <Image
@@ -231,6 +235,7 @@ export default function ExportScreen({ route, navigation }: Props) {
           <Text style={styles.hint}>
             {t('export.slideshow.hint', { album: albumName })}
           </Text>
+          </View>
         </View>
       ) : (
         <View style={styles.collageContainer}>
@@ -376,6 +381,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: spacing.md,
   },
+  slideContent: {
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH,
+    alignSelf: 'center',
+  },
   slidePreview: {
     width: PREVIEW_WIDTH,
     aspectRatio: 1,
@@ -513,6 +523,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     paddingTop: spacing.md,
     paddingBottom: spacing.lg,
+    width: '100%',
+    maxWidth: MAX_CONTENT_WIDTH + spacing.md * 2,
+    alignSelf: 'center',
     gap: spacing.sm,
     borderTopWidth: 1,
     borderColor: colors.border,

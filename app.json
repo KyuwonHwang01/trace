@@ -15,7 +15,7 @@
     "ios": {
       "bundleIdentifier": "com.underdog.trace",
       "supportsTablet": true,
-      "buildNumber": "8",
+      "buildNumber": "9",
       "infoPlist": {
         "NSCameraUsageDescription": "Trace uses the camera to take photos for your visual timeline and to display a translucent overlay of a previous reference photo, so you can match the same angle and composition when tracking slow changes like plant growth, fitness progress, or room transformations.",
         "NSPhotoLibraryUsageDescription": "Trace uses your photo library to import existing photos into your timeline projects (with original EXIF dates preserved) and to save exported slideshow albums and comparison collages back to your library so you can share them.",
